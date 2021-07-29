@@ -8,41 +8,41 @@ on:
   #     - 'v*'
   # pull_request:
 
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     steps:
-#       -
-#         name: Checkout
-#         uses: actions/checkout@v2
+jobs:
+  # test:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     -
+  #       name: Checkout
+  #       uses: actions/checkout@v2
 
-#       -
-#         name: Run tests
-#         run: docker-compose run --rm chirpstack-gateway-bridge make test
+  #     -
+  #       name: Run tests
+  #       run: docker-compose run --rm chirpstack-gateway-bridge make test
 
-#   dist:
-#     needs: test
-#     runs-on: ubuntu-latest
-#     if: startsWith(github.ref, 'refs/tags/v')
-#     steps:
-#       -
-#         name: Checkout
-#         uses: actions/checkout@v2
-#       -
-#         name: Configure AWS credentials
-#         uses: aws-actions/configure-aws-credentials@v1
-#         with:
-#           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-#           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           aws-region: eu-west-1
-#       -
-#         name: Build distributable binaries
-#         run: docker-compose run --rm chirpstack-gateway-bridge make dist
-#       -
-#         name: Upload binaries to S3
-#         if: startsWith(github.ref, 'refs/tags/v')
-#         run: |
-#           aws s3 sync dist/upload s3://builds.loraserver.io/chirpstack-gateway-bridge
+  # dist:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   if: startsWith(github.ref, 'refs/tags/v')
+  #   steps:
+  #     -
+  #       name: Checkout
+  #       uses: actions/checkout@v2
+  #     -
+  #       name: Configure AWS credentials
+  #       uses: aws-actions/configure-aws-credentials@v1
+  #       with:
+  #         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  #         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  #         aws-region: eu-west-1
+  #     -
+  #       name: Build distributable binaries
+  #       run: docker-compose run --rm chirpstack-gateway-bridge make dist
+  #     -
+  #       name: Upload binaries to S3
+  #       if: startsWith(github.ref, 'refs/tags/v')
+  #       run: |
+  #         aws s3 sync dist/upload s3://builds.loraserver.io/chirpstack-gateway-bridge
 
   docker:
     # needs: test
