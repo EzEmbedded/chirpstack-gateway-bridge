@@ -66,8 +66,6 @@ jobs:
             type=semver,pattern={{major}}
             type=semver,pattern={{major}}.{{minor}}
       -
-        run: echo "tags:is{{steps.meta.outputs.tags}}"
-      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       -
@@ -87,7 +85,7 @@ jobs:
           platforms: linux/arm/v7
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: scanlidocker/chirpstack-gateway-bridge:v0.21
           labels: ${{ steps.meta.outputs.labels }}
       -
         name: Image digest
