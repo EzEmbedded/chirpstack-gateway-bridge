@@ -67,7 +67,7 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
       -
         run: |
-            echo "tags:is{{tags}}"
+            echo "tags:is{{steps.meta.outputs.tags}}"
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
