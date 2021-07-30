@@ -65,6 +65,7 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}
             type=semver,pattern={{major}}.{{minor}}
+      -
         run: echo "tags:is{{steps.meta.outputs.tags}}"
       -
         name: Set up QEMU
